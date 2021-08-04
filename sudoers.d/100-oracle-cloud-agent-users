@@ -1,0 +1,37 @@
+Cmnd_Alias ISCSIADM = /sbin/iscsiadm, /usr/sbin/iscsiadm
+
+Cmnd_Alias MULTIPATH_INSTALL = /bin/yum install -y device-mapper-multipath, \
+                               /usr/bin/yum install -y device-mapper-multipath, \
+                               /bin/dnf install -y device-mapper-multipath, \
+                               /usr/bin/dnf install -y device-mapper-multipath, \
+                               /bin/apt install -y multipath-tools, \
+                               /usr/bin/apt install -y multipath-tools
+
+Cmnd_Alias MULTIPATH_SYSTEMD = /bin/systemctl * multipathd.service, \
+                               /bin/systemctl * multipath-tools
+
+Cmnd_Alias MULTIPATH_LIST = /sbin/multipath -ll, /usr/sbin/multipath -ll
+
+Cmnd_Alias UM_INSTALL = /usr/bin/apt install -o Dpkg\:\:Options\:\:\=--force-confold -y /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb, \
+                        /bin/apt install -o Dpkg\:\:Options\:\:\=--force-confold -y /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb
+
+Cmnd_Alias UM_DOWNGRADE = /usr/bin/apt --allow-downgrades install -o Dpkg\:\:Options\:\:\=--force-confold -y /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb, \
+                          /bin/apt --allow-downgrades install -o Dpkg\:\:Options\:\:\=--force-confold -y /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb
+
+Cmnd_Alias UM_SYSTEMD = /bin/systemctl * unified-monitoring-agent.service, \
+                        /bin/systemctl * unified-monitoring-agent_config_downloader.timer
+
+Cmnd_Alias UM_KEY_IMPORT = /usr/bin/gpg --import /etc/oracle-cloud-agent/plugins/unifiedmonitoring/rpm-gpg-pub-key-centos8, \
+                           /bin/gpg --import /etc/oracle-cloud-agent/plugins/unifiedmonitoring/rpm-gpg-pub-key-centos8
+
+Cmnd_Alias UM_DPKGSIG_INSTALL = /usr/bin/apt install -o Dpkg\:\:Options\:\:\=--force-confold -y dpkg-sig, \
+                                /bin/apt install -o Dpkg\:\:Options\:\:\=--force-confold -y dpkg-sig
+
+Cmnd_Alias UM_DPKGSIG_VERIFY = /usr/bin/dpkg-sig --verify /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb, \
+                                /bin/dpkg-sig --verify /var/lib/oracle-cloud-agent/plugins/unifiedmonitoring/temp-unified-monitoring.deb
+Cmnd_Alias UM_UPDATE = /usr/bin/apt update, \
+                        /bin/apt update
+
+snap_daemon ALL=(root) NOPASSWD: ISCSIADM, MULTIPATH_INSTALL, MULTIPATH_SYSTEMD, MULTIPATH_LIST, UM_INSTALL, UM_DOWNGRADE, UM_SYSTEMD, UM_KEY_IMPORT, UM_DPKGSIG_INSTALL, UM_DPKGSIG_VERIFY, UM_UPDATE
+
+Defaults:snap_daemon !requiretty

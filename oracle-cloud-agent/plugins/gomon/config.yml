@@ -1,0 +1,74 @@
+logDir: "/var/log/oracle-cloud-agent/plugins/gomon"
+# telemetry metrics will be collected every 10 seconds
+telemetryInterval: 10s
+# a metrics batch contains 6 cycles of metrics
+telemetryBatchSize: 6
+# on failure number of batches to save in ring buffer.
+# number of metrics in ring buffer will be telemetryBatchCountInRing * telemetryBatchSize
+telemetryBatchCountInRing: 3
+telemetry:
+  sample: false
+  metrics:
+    - name: CpuUtilization
+      unit: Percent
+      sample: 10
+      min_range: 0
+      max_range: 100
+    - name: MemoryUtilization
+      unit: Percent
+      sample: 10
+      min_range: 0
+      max_range: 100
+    - name: NetworksBytesIn
+      unit: Bytes
+      sample: 10000
+    - name: NetworksBytesOut
+      unit: Bytes
+      sample: 10000
+    - name: DiskBytesRead
+      unit: Bytes
+      sample: 10000
+    - name: DiskBytesWritten
+      unit: Bytes
+      sample: 10000
+    - name: DiskIopsRead
+      unit: Operations
+      sample: 10000
+    - name: DiskIopsWritten
+      unit: Operations
+      sample: 10000
+    - name: LoadAverage
+      unit: NumberOfProcesses
+      sample: 0.09
+    - name: MemoryAllocationStalls
+      unit: NumberOfStalls
+      sample: 0.0
+  perfmon:
+    metrics:
+      - path: \Processor Information(_Total)\% Processor Time
+        telemetry_metric_name: CpuUtilization
+        type: double
+      - path: \Memory\% Committed Bytes In Use
+        telemetry_metric_name: MemoryUtilization
+        type: double
+      - path: \PhysicalDisk(_Total)\Disk Reads/sec
+        telemetry_metric_name: DiskIopsRead
+        type: raw
+      - path: \PhysicalDisk(_Total)\Disk Writes/sec
+        telemetry_metric_name: DiskIopsWritten
+        type: raw
+      - path: \PhysicalDisk(_Total)\Disk Read Bytes/sec
+        telemetry_metric_name: DiskBytesRead
+        type: raw
+      - path: \PhysicalDisk(_Total)\Disk Write Bytes/sec
+        telemetry_metric_name: DiskBytesWritten
+        type: raw
+      - path: \Network Interface(*)\Bytes Received/sec
+        telemetry_metric_name: NetworksBytesIn
+        type: raw
+      - path: \Network Interface(*)\Bytes Sent/sec
+        telemetry_metric_name: NetworksBytesOut
+        type: raw
+      - path: \System\Processor Queue Length
+        telemetry_metric_name: LoadAverage
+        type: double

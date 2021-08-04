@@ -1,0 +1,1 @@
+Cmnd_Alias  VSS_SSHD = /bin/sshd, /usr/bin/sshd, /usr/sbin/sshd

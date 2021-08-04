@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount unit for oracle-cloud-agent, revision 18
+Before=snapd.service
+After=zfs-mount.service
+
+[Mount]
+What=/var/lib/snapd/snaps/oracle-cloud-agent_18.snap
+Where=/snap/oracle-cloud-agent/18
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=multi-user.target

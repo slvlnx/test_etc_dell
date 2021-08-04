@@ -1,0 +1,17 @@
+/var/log/unified-monitoring-agent/unified-monitoring-agent.log {
+  daily
+  rotate 10
+  size 10M
+  compress
+  delaycompress
+  notifempty
+  create 640 root root
+  sharedscripts
+  postrotate
+    pid=/var/run/unified-monitoring-agent/unified-monitoring-agent.pid
+    if [ -s "$pid" ]
+    then
+      kill -USR1 "$(cat $pid)"
+    fi
+  endscript
+}

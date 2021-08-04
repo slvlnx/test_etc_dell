@@ -1,0 +1,3 @@
+logDir: /var/log/oracle-cloud-agent/plugins/oci-managementagent
+macsEnvOverrideHost: https://management-agent-devtest.eu-frankfurt-1.oci.oraclecloud.com
+objStoreOverrideHost: https://objectstorage.eu-frankfurt-1.oraclecloud.com

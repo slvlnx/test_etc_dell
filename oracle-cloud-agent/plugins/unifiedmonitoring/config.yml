@@ -1,0 +1,4 @@
+logDir:
+  linux: "/var/log/oracle-cloud-agent/plugins/unifiedmonitoring"
+downloadJitter: "4m" # jitter used for downloading version info and agent package
+downloadInitialDelay: "2m"

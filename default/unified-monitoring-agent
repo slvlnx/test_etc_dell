@@ -1,0 +1,4 @@
+# This file is sourced by /bin/sh from /etc/init.d/unified-monitoring-agent
+# Options to pass to unified-monitoring-agent
+UNIFIED_AGENT_OPTIONS=""
+

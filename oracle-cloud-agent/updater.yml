@@ -1,0 +1,19 @@
+agent:
+  upgrade_interval: -1
+  heartbeat_interval: 10800
+  heartbeat_init_jitter: 120 
+  log_dir:
+    linux: /var/log/oracle-cloud-agent
+    windows: "${LOCALAPPDATA}\\OracleCloudAgent"
+  cache_dir:
+    linux: /var/lib/oracle-cloud-agent
+    windows: "${LOCALAPPDATA}\\OracleCloudAgent"
+  repos:
+  - url: 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/oci-i3/b/agents/o/'
+    region: us-phoenix-1
+  - url: 'https://objectstorage.eu-frankfurt-1.oraclecloud.com/n/oci-i3/b/agents/o/'
+    region: eu-frankfurt-1
+  - url: 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/oci-i3/b/agents/o/'
+    region: us-ashburn-1
+  - url: 'https://objectstorage.uk-london-1.oraclecloud.com/n/oci-i3/b/agents/o/'
+    region: uk-london-1

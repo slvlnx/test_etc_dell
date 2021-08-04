@@ -1,0 +1,59 @@
+logDir: "/var/log/oracle-cloud-agent"
+agentHardStopInterval: "25s"
+pluginHardStopInterval: "20s"
+pluginHealthCheckInterval: "10m"
+plugins:
+  gomon:
+    disabled: false
+    exec: "/snap/oracle-cloud-agent/current/plugins/gomon/gomon"
+    elevated: false
+    args: []
+  bastions:
+    disabled: false
+    disableByRealm:
+      - "oc2"
+      - "oc3"
+      - "oc6"
+      - "oc7"
+    exec: "/var/snap/oracle-cloud-agent/common/bastions"
+    elevated: false
+    args: []
+  oci-vulnerabilityscan:
+    exec: "/snap/oracle-cloud-agent/current/plugins/oci-vulnerabilityscan/oci-vulnerabilityscan"
+    elevated: false
+    args: []
+    disabled: false
+    disableByRealm:
+      - "oc2"
+      - "oc3"
+      - "oc6"
+      - "oc7"
+  unifiedmonitoring:
+    disableByOs:
+      - "CentOS Linux":
+          - "6.x"
+      - "Oracle Linux Server":
+          - "6.x"
+    disableByRealm:
+      - "oc2"
+      - "oc3"
+      - "oc5"
+      - "oc6"
+      - "oc7"
+    disableByShape:
+      - "VM.Standard.E2.1.Micro"
+    disabled: false
+    exec: "/snap/oracle-cloud-agent/current/plugins/unifiedmonitoring/unifiedmonitoring"
+    args: []
+  oci-managementagent:
+    exec: "/snap/oracle-cloud-agent/current/plugins/oci-managementagent/oci-managementagent"
+    elevated: false
+    args: []
+    disabled: false
+    disableByRealm:
+      - "oc2"
+      - "oc3"
+      - "oc4"
+      - "oc5"
+      - "oc6"
+      - "oc7"

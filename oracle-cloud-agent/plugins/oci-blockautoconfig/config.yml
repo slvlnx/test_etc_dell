@@ -1,0 +1,4 @@
+logDir: "/var/log/oracle-cloud-agent/plugins/oci-blockautoconfig"
+pollIMDSInterval: '60s'
+configForBareMetalOnly: false
+configForMultipathOnly: true
